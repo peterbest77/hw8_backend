@@ -6,7 +6,7 @@ app.all('*', function(req, res, next) {
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
     res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
     res.header("X-Powered-By",' 3.2.1') ;
-    res.header("Content-Type", "application/json;charset=utf-8");
+    res.header("Content-Type", "application/json;charset=utf-8"); // 部署的时候删了，要不在gcp上部署不成功
     next();
 });
 
@@ -19,7 +19,7 @@ app.get('/sendCity', function(req, res) {
     path: '/sendCity',
         
     method: 'GET',
-        url:'https://maps.googleapis.com/maps/api/place/autocomplete/json?input='+ temp + '&types=(cities)&key=AIzaSyCYBTxxl7O-Jothulmd1oe3Dcl-pnFUn2g',
+        url:'https://maps.googleapis.com/maps/api/place/autocomplete/json?input='+ temp + '&types=(cities)&key=',
     json: true
 };
 
@@ -47,7 +47,7 @@ app.get('/tomorrow', function(req, res) {
    var lat = req.query.lat;
    var lng = req.query.lng;
    var street = lat+","+lng;
-    const url = 'https://api.tomorrow.io/v4/timelines?location='+street+'&fields=temperature&fields=temperatureApparent&fields=temperatureMin&fields=temperatureMax&fields=windSpeed&fields=windDirection&fields=humidity&fields=pressureSeaLevel&fields=uvIndex&fields=weatherCode&fields=precipitationProbability&fields=precipitationType&fields=sunriseTime&fields=sunsetTime&fields=visibility&fields=moonPhase&fields=cloudCover&units=imperial&timesteps=current&timesteps=1h&timesteps=1d&timezone=America/Los_Angeles&apikey=YyAFenHBBvWKX4VZYkRY0SNjrpGEchNL';
+    const url = 'https://api.tomorrow.io/v4/timelines?location='+street+'&fields=temperature&fields=temperatureApparent&fields=temperatureMin&fields=temperatureMax&fields=windSpeed&fields=windDirection&fields=humidity&fields=pressureSeaLevel&fields=uvIndex&fields=weatherCode&fields=precipitationProbability&fields=precipitationType&fields=sunriseTime&fields=sunsetTime&fields=visibility&fields=moonPhase&fields=cloudCover&units=imperial&timesteps=current&timesteps=1h&timesteps=1d&timezone=America/Los_Angeles&apikey=';
 
     var request = require('request');
     var options = {
